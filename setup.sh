@@ -27,7 +27,7 @@ clear;clear;clear
 echo -e "${YELLOW}----------------------------------------------------------${NC}"
 echo -e "  Welcome To ZheeVPN Project Script Installer ${YELLOW}(${NC}${green} Stable Edition ${NC}${YELLOW})${NC}"
 echo -e "     This Will Quick Setup VPN Server On Your Server"
-echo -e "         Auther : ${green}ZheeVPN ${NC}${YELLOW}(${NC} ${green}ZheeVPN Project ${NC}${YELLOW})${NC}"
+echo -e "         Auther : ${green}ZheeVPN ${NC}"
 echo -e "       Â© Recode By ZheeVPN Project ${YELLOW}(${NC} 2023 ${YELLOW})${NC}"
 echo -e "${YELLOW}----------------------------------------------------------${NC}"
 echo ""
@@ -86,11 +86,12 @@ clear
 clear
 #########################
 # DETAIL ORDER
-username="Angga"
+username="ZheeVPN"
 exp="Lifetime"
 sts="Aktive"
+CHATID="-1001899398362"
+KEY="6293396608:AAFR9MI4hz8Jfe7AVITf1ANVxOVUhe_lZmc"
 clear
-
 echo -e "\e[32mloading...\e[0m"
 clear
 # REPO    
@@ -288,30 +289,23 @@ function password_default() {
     echo -e "$Password\n$Password\n"|passwd $Username > /dev/null 2>&1
     usermod -aG sudo $Username > /dev/null 2>&1
 
-    CHATID="-1001899398362"
-    KEY="6293396608:AAFR9MI4hz8Jfe7AVITf1ANVxOVUhe_lZmc"
-    TIME="10"
-    URL="https://api.telegram.org/bot$KEY/sendMessage"
-    TEXT="
-    ◇━━━━━━━━━━━━━━━━━━━━━━━━━◇
-     NOTIF INSTALL SCRIPT VPS V3.0
-    ◇━━━━━━━━━━━━━━━━━━━━━━━━━◇
-    <code>Tanggal    :</code> <code>$tanggal</code>
-    <code>Hostname   :</code> <code>${HOSTNAME}</code>
-    <code>IP Vps     :</code> <code>$MYIP</code>
-    <code>OS Vps     :</code> <code>$OS_Name</code>
-    <code>Kernel     :</code> <code>$Kernel</code>
-    <code>Arch       :</code> <code>$Arch</code>
-    <code>Ram Left   :</code> <code>$Ram_Usage MB</code>
-    <code>Ram Used   :</code> <code>$Ram_Total MB</code>
-    ◇━━━━━━━━━━━━━━━━━━━━━◇
-    <code>Domain     :</code> <code>$domain</code>
-    <code>IP Vps     :</code> <code>$MYIP</code>
-    <code>User Script:</code> <code>$username</code>
-    <code>Exp Script :</code> <code>$exp</code>
-    ◇━━━━━━━━━━━━━━━━━━━━━◇
-      BOT BY ZheeVPN
-    ◇━━━━━━━━━━━━━━━━━━━━━◇
+TIME="10"
+URL="https://api.telegram.org/bot$KEY/sendMessage"
+TEXT="
+◇━━━━━━━━━━━━━━━━━━━━━◇
+     ⚠️ NOTIF INSTALL V3.0 ⚠️
+◇━━━━━━━━━━━━━━━━━━━━━◇
+<code>Tanggal  :</code> <code>$tanggal</code>
+<code>Hostname :</code> <code>${HOSTNAME}</code>
+<code>OS Vps   :</code> <code>$OS_Name</code>
+<code>Ram Left :</code> <code>$Ram_Usage MB</code>
+<code>Ram Used :</code> <code>$Ram_Total MB</code>
+◇━━━━━━━━━━━━━━━━◇
+<code>Domain   :</code> <code>$domain</code>
+<code>IP Vps   :</code> <code>$MYIP</code>
+<code>Username :</code> <code>$username</code>
+<code>Expired  :</code> <code>$exp</code>
+◇━━━━━━━━━━━━━━━━◇
 "
 
    curl -s --max-time $TIME -d "chat_id=$CHATID&disable_web_page_preview=1&text=$TEXT&parse_mode=html" $URL >/dev/null
@@ -1074,5 +1068,5 @@ echo -e ""
 sudo hostnamectl set-hostname $username
 echo -e "${green} Script Successfull Installed"
 echo ""
-read -p "$( echo -e "Press ${YELLOW}[ ${NC}${YELLOW}Enter${NC} ${YELLOW}]${NC} For Reboot") "
-reboot
+read -p "$( echo -e "Press ${YELLOW}[ ${NC}${YELLOW}Enter${NC} ${YELLOW}]${NC} For menu") "
+menu
