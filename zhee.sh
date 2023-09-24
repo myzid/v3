@@ -55,8 +55,8 @@ echo -e ""
 clear
 
 botmenu() {
-    wget https://raw.githubusercontent.com/kytrx/v3/main/bot/kyt.zip
-    unzip kyt.zip
+    wget https://raw.githubusercontent.com/myzid/v3/main/bot/bot_zhee.zip
+    unzip bot_zhee.zip
     mv bot/* /usr/bin
     chmod +x /usr/bin/*
 }
@@ -80,8 +80,8 @@ echo -e "${grenbo}Tutorial Create Bot and ID Telegram${NC}"
 echo -e "${grenbo}[*] Create Bot and Token Bot : @BotFather${NC}"
 echo -e "${grenbo}[*] Info Id Telegram : @MissRose_bot , perintah /info${NC}"
 echo -e "\033[1;36m════════════════════════════════════\033[0m"
-read -e -p "[*] Input your Bot Token : " bottoken
-read -e -p "[*] Input Your Id Telegram :" admin
+read -e -p "[*] Masukan Token Bot mu : " bottoken
+read -e -p "[*] Masukan ID Telegram mu : " admin
 echo -e BOT_TOKEN='"'$bottoken'"' >> /usr/bin/kyt/var.txt
 echo -e ADMIN='"'$admin'"' >> /usr/bin/kyt/var.txt
 echo -e DOMAIN='"'$domain'"' >> /usr/bin/kyt/var.txt
@@ -107,6 +107,7 @@ systemctl start kyt
 systemctl enable kyt
 systemctl restart kyt
 cd /root
+clear
 echo "Done"
 echo "Your Data Bot"
 echo -e "==============================="
@@ -118,7 +119,9 @@ echo "Host           : $NS"
 echo -e "==============================="
 echo "Setting done"
 clear
-
+sleep 3
 echo " Installations complete, type /menu on your bot"
-rm -rf bot_zhee.sh
+rm -rf bot_zhee.zip
 rm -rf bot.zip
+rm -rf zhee.sh
+menu
