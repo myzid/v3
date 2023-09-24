@@ -1,5 +1,6 @@
 #!/bin/bash
-### Color
+clear
+### Color ###
 Green="\e[92;1m"
 RED="\033[31m"
 YELLOW="\033[33m"
@@ -27,12 +28,37 @@ clear;clear;clear
 echo -e "${YELLOW}----------------------------------------------------------${NC}"
 echo -e "  Welcome To ZheeVPN Project Script Installer ${YELLOW}(${NC}${green} Stable Edition ${NC}${YELLOW})${NC}"
 echo -e "     This Will Quick Setup VPN Server On Your Server"
-echo -e "         Auther : ${green}ZheeVPN ${NC}"
+echo -e "          Auther : ${green}ZheeVPN ${NC}"
 echo -e "       Â© Recode By ZheeVPN Project ${YELLOW}(${NC} 2023 ${YELLOW})${NC}"
 echo -e "${YELLOW}----------------------------------------------------------${NC}"
 echo ""
-sleep 5
-###### IZIN SC 
+sleep 3
+ipsaya=$(wget -qO- ipinfo.io/ip)
+data_server=$(curl -v --insecure --silent https://google.com/ 2>&1 | grep Date | sed -e 's/< Date: //')
+date_list=$(date +"%Y-%m-%d" -d "$data_server")
+data_ip="https://raw.githubusercontent.com/myzid/izin/main/ip"
+checking_sc() {
+  useexp=$(wget -qO- $data_ip | grep $ipsaya | awk '{print $3}')
+  if [[ $date_list < $useexp ]]; then
+    echo -ne
+  else
+    echo -e "\033[1;93m────────────────────────────────────────────\033[0m"
+    echo -e "\033[42m          404 NOT FOUND AUTOSCRIPT          \033[0m"
+    echo -e "\033[1;93m────────────────────────────────────────────\033[0m"
+    echo -e ""
+    echo -e "            ${RED}PERMISSION DENIED !${NC}"
+    echo -e "   \033[0;33mYour VPS${NC} $ipsaya \033[0;33mHas been Banned${NC}"
+    echo -e "     \033[0;33mBuy access permissions for scripts${NC}"
+    echo -e "             \033[0;33mContact Admin :${NC}"
+    echo -e "      \033[0;36mTelegram${NC} t.me/zheevpn"
+    echo -e "      ${GREEN}WhatsApp${NC} wa.me/6283160098834"
+    echo -e "\033[1;93m────────────────────────────────────────────\033[0m"
+    exit
+  fi
+}
+checking_sc
+clear
+##### IZIN SCRIPT #####
 # // Checking Os Architecture
 if [[ $( uname -m | awk '{print $1}' ) == "x86_64" ]]; then
     echo -e "${OK} Your Architecture Is Supported ( ${green}$( uname -m )${NC} )"
@@ -74,25 +100,36 @@ fi
 red='\e[1;31m'
 green='\e[0;32m'
 NC='\e[0m'
-#IZIN SCRIPT
-MYIP=$(curl -sS ipv4.icanhazip.com)
-echo -e "\e[32mloading...\e[0m"
-clear
-#IZIN SCRIPT
+# IZIN SCRIPT
 MYIP=$(curl -sS ipv4.icanhazip.com)
 echo -e "\e[32mloading...\e[0m" 
 clear
-# Version sc
-clear
-#########################
+############# Status ############
+rm -f /usr/bin/user
+username=$(curl https://raw.githubusercontent.com/FadlyNotNot/ipku/main/ipvps | grep $MYIP | awk '{print $2}')
+echo "$username" >/usr/bin/user
+expx=$(curl https://raw.githubusercontent.com/FadlyNotNot/ipku/main/ipvps | grep $MYIP | awk '{print $3}')
+echo "$expx" >/usr/bin/e
 # DETAIL ORDER
-username="ZheeVPN"
-exp="Lifetime"
-sts="Aktive"
+username=$(cat /usr/bin/user)
+oid=$(cat /usr/bin/ver)
+exp=$(cat /usr/bin/e)
+clear
+# CERTIFICATE STATUS
+d1=$(date -d "$valid" +%s)
+d2=$(date -d "$today" +%s)
+certifacate=$(((d1 - d2) / 86400))
+# VPS Information
+DATE=$(date +'%Y-%m-%d')
+datediff() {
+    d1=$(date -d "$1" +%s)
+    d2=$(date -d "$2" +%s)
+    echo -e "$COLOR1 $NC Expiry In   : $(( (d1 - d2) / 86400 )) Days"
+}
+mai="datediff "$Exp" "$DATE""
+
 CHATID="-1001899398362"
 KEY="6293396608:AAFR9MI4hz8Jfe7AVITf1ANVxOVUhe_lZmc"
-clear
-echo -e "\e[32mloading...\e[0m"
 clear
 # REPO    
     REPO="https://raw.githubusercontent.com/myzid/v3/main/"
@@ -107,9 +144,9 @@ function print_ok() {
     echo -e "${OK} ${BLUE} $1 ${FONT}"
 }
 function print_install() {
-	echo -e "${green} =============================== ${FONT}"
-    echo -e "${YELLOW} # $1 ${FONT}"
-	echo -e "${green} =============================== ${FONT}"
+	echo -e "${green} •──────────────────────────• ${FONT}"
+    echo -e "${YELLOW}  $1 ${FONT}"
+	echo -e "${green} •──────────────────────────• ${FONT}"
     sleep 1
 }
 
@@ -119,9 +156,9 @@ function print_error() {
 
 function print_success() {
     if [[ 0 -eq $? ]]; then
-		echo -e "${green} =============================== ${FONT}"
-        echo -e "${Green} # $1 berhasil dipasang"
-		echo -e "${green} =============================== ${FONT}"
+		echo -e "${green} •──────────────────────────• ${FONT}"
+        echo -e "${Green}  $1 berhasil dipasang"
+		echo -e "${green} •──────────────────────────• ${FONT}"
         sleep 2
     fi
 }
@@ -248,17 +285,19 @@ clear
 function pasang_domain() {
 echo -e ""
 clear
-    echo -e "   .----------------------------------."
-echo -e "   |\e[1;32mPlease Select a Domain Type Below \e[0m|"
-echo -e "   '----------------------------------'"
-echo -e "     \e[1;32m1)\e[0m Enter Your Subdomain"
-echo -e "     \e[1;32m2)\e[0m Use a Random Subdomain"
-echo -e "   ------------------------------------"
-read -p "   Please select numbers 1-2 or Any Button(Random) : " host
+echo -e "┌─────────────────────────────────────────────────┐" | lolcat
+echo -e "│               SETUP DOMAIN MENU                 │" | lolcat
+echo -e "└─────────────────────────────────────────────────┘" | lolcat
+echo -e ""
+echo -e "   \e[1;32m1)\e[0m Menggunakan Domain Sendiri "
+echo -e "   \e[1;32m2)\e[0m Menggunakan Domain Dari Script "
+echo -e ""
+echo -e "───────────────────────────────────────────────────" | lolcat
+read -p "   Pilih Angka Di atas [ 1 - 2 ] : " host
 echo ""
 if [[ $host == "1" ]]; then
-echo -e "   \e[1;32mPlease Enter Your Subdomain $NC"
-read -p "   Subdomain: " host1
+echo -e "   \e[1;32mMasukan Subdomain Mu ! $NC"
+read -p "   Subdomain : " host1
 echo "IP=" >> /var/lib/kyt/ipvps.conf
 echo $host1 > /etc/xray/domain
 echo $host1 > /root/domain
@@ -292,20 +331,22 @@ function password_default() {
 TIME="10"
 URL="https://api.telegram.org/bot$KEY/sendMessage"
 TEXT="
-◇━━━━━━━━━━━━━━━━━━━━━◇
-     ⚠️ NOTIF INSTALL V3.0 ⚠️
-◇━━━━━━━━━━━━━━━━━━━━━◇
-<code>Tanggal  :</code> <code>$tanggal</code>
-<code>Hostname :</code> <code>${HOSTNAME}</code>
-<code>OS Vps   :</code> <code>$OS_Name</code>
-<code>Ram Left :</code> <code>$Ram_Usage MB</code>
-<code>Ram Used :</code> <code>$Ram_Total MB</code>
-◇━━━━━━━━━━━━━━━━◇
-<code>Domain   :</code> <code>$domain</code>
-<code>IP Vps   :</code> <code>$MYIP</code>
-<code>Username :</code> <code>$username</code>
-<code>Expired  :</code> <code>$exp</code>
-◇━━━━━━━━━━━━━━━━◇
+────────────────────────
+   ⚡ INSTALLASI SCRIPT ⚡
+────────────────────────
+Tanggal  : <code>$tanggal</code>
+Hostname : <code>${HOSTNAME}</code>
+Linux    : <code>$OS_Name</code>
+Ram Used : <code>$Ram_Total / $Ram_Usage MB</code>
+────────────────────────
+Domain   : <code>$domain</code>
+IP Vps   : <code>$MYIP</code>
+Username : <code>$username</code>
+Expired  : <code>$exp</code>
+────────────────────────
+<i>Nontifikasi Otomatis Dari Github</i>
+<i>Zhee_VPN</i>
+'&reply_markup={"inline_keyboard":[[{"text":"⚡ ORDER ⚡","url":"https://t.me/zheevpn"}]]}'
 "
 
    curl -s --max-time $TIME -d "chat_id=$CHATID&disable_web_page_preview=1&text=$TEXT&parse_mode=html" $URL >/dev/null
@@ -1028,9 +1069,6 @@ echo ""
 echo " "
 echo "=====================-[ ZheeVPN ]-===================="
 echo ""
-echo "------------------------------------------------------------"
-echo ""
-echo ""
 echo "   >>> Service & Port"  | tee -a log-install.txt
 echo "   - SlowDNS SSH              : ALL Port SSH"  | tee -a log-install.txt
 echo "   - OpenSSH                  : 22"  | tee -a log-install.txt
@@ -1060,13 +1098,10 @@ echo ""
 echo ""
 echo "------------------------------------------------------------"
 echo ""
-echo "=====================-[ ZheeVPN ]-===================="
-echo -e ""
-echo ""
 echo "" | tee -a log-install.txt
 echo -e ""
 sudo hostnamectl set-hostname $username
 echo -e "${green} Script Successfull Installed"
 echo ""
-read -p "$( echo -e "Press ${YELLOW}[ ${NC}${YELLOW}Enter${NC} ${YELLOW}]${NC} For menu") "
-menu
+read -p "$( echo -e "Press ${YELLOW}[ ${NC}${YELLOW}Enter${NC} ${YELLOW}]${NC} For Reboot ") : "
+reboot
