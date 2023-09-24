@@ -9,17 +9,6 @@
 - UBUNTU 20.04 ( Disarankan )
 - DEBIAN 10
 
-
-### FITUR TAMBAHAN
-- Tambah Swap 1GB
-- Pemasangan yang dinamis
-- Tuning profile pada server
-- Penambahan fail2ban
-- Auto block sebagian ads indo by default
-- Auto clear log per 3 menit
-- Auto deler expired
-- User Details Akun
-
 ### SETTING CLOUDFLARE
 ```
 - SSL/TLS : FULL
