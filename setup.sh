@@ -24,7 +24,7 @@ clear
 clear && clear && clear
 clear;clear;clear
 
-  # // Banner
+# // Banner
 echo -e "${YELLOW}----------------------------------------------------------${NC}"
 echo -e "  Welcome To ZheeVPN Project Script Installer ${YELLOW}(${NC}${green} Stable Edition ${NC}${YELLOW})${NC}"
 echo -e "     This Will Quick Setup VPN Server On Your Server"
@@ -57,6 +57,39 @@ checking_sc() {
   fi
 }
 checking_sc
+clear
+#!/bin/bash
+dateFromServer=$(curl -v --insecure --silent https://google.com/ 2>&1 | grep Date | sed -e 's/< Date: //')
+biji=`date +"%Y-%m-%d" -d "$dateFromServer"`
+red() { echo -e "\\033[32;1m${*}\\033[0m"; }
+clear
+fun_bar() {
+    CMD[0]="$1"
+    CMD[1]="$2"
+    (
+        [[ -e $HOME/fim ]] && rm $HOME/fim
+        ${CMD[0]} -y >/dev/null 2>&1
+        ${CMD[1]} -y >/dev/null 2>&1
+        touch $HOME/fim
+    ) >/dev/null 2>&1 &
+    tput civis
+    echo -ne "  \033[0;33mPlease Wait Loading \033[1;37m- \033[0;33m["
+    while true; do
+        for ((i = 0; i < 18; i++)); do
+            echo -ne "\033[0;32m#"
+            sleep 0.1s
+        done
+        [[ -e $HOME/fim ]] && rm $HOME/fim && break
+        echo -e "\033[0;33m]"
+        sleep 1s
+        tput cuu1
+        tput dl1
+        echo -ne "  \033[0;33mPlease Wait Loading \033[1;37m- \033[0;33m["
+    done
+    echo -e "\033[0;33m]\033[1;37m -\033[1;32m OK !\033[1;37m"
+    tput cnorm
+}
+netfilter-persistent
 clear
 ##### IZIN SCRIPT #####
 # // Checking Os Architecture
@@ -892,6 +925,26 @@ apt autoremove -y >/dev/null 2>&1
 print_success "ePro WebSocket Proxy"
 }
 
+#Instal Menu
+clear
+print_install "Memasang Menu Packet"
+res1() {
+    wget ${REPO}menu/menu.zip
+    unzip menu.zip
+    chmod +x menu/*
+    mv menu/* /usr/local/sbin
+    rm -rf menu
+    rm -rf menu.zip
+}
+echo -e "\033[1;36m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
+echo -e " \e[1;97;101m          Memasang Menu Packet                 \e[0m"
+echo -e "\033[1;36m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
+echo -e ""
+echo -e "  \033[1;91m Memasang Menu Packet\033[1;37m"
+fun_bar 'res1'
+echo -e "\033[1;36m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
+
+
 function ins_restart(){
 clear
 print_install "Restarting  All Packet"
@@ -923,18 +976,6 @@ rm -f /root/openvpn
 rm -f /root/key.pem
 rm -f /root/cert.pem
 print_success "All Packet"
-}
-
-#Instal Menu
-function menu(){
-    clear
-    print_install "Memasang Menu Packet"
-    wget ${REPO}menu/menu.zip
-    unzip menu.zip
-    chmod +x menu/*
-    mv menu/* /usr/local/sbin
-    rm -rf menu
-    rm -rf menu.zip
 }
 
 # Membaut Default Menu 
@@ -1050,7 +1091,6 @@ clear
     ins_Fail2ban
     ins_epro
     ins_restart
-    menu
     profile
     enable_services
 }
