@@ -1,16 +1,16 @@
 #!/bin/bash
 # Edition : Stable Edition V3.0
-# Auther  : Geo Project
+# Auther  : ZheeVPN Project
 # (C) Copyright 2023
 # =========================================
 MYIP=$(wget -qO- ipinfo.io/ip);
 clear
 apt install jq curl -y >/dev/null 2>&1
-read -rp "Sub Domain (Contoh: yogz): " -e sub
-DOMAIN=vvipp.my.id
-SUB_DOMAIN=${sub}.vvipp.my.id
-CF_ID=Adigemether@gmail.com
-CF_KEY=9fbcdd7425bb52d1bed1c66f710713d095974
+read -rp "Sub Domain (Contoh: Zhee121): " -e sub
+DOMAIN=vpn-prem.biz.id
+SUB_DOMAIN=${sub}.vpn-prem.biz.id
+CF_ID=padliapandi459@gmail.com
+CF_KEY=1a700ef4a22e642f0ea8d43420bb0b1237589
 set -euo pipefail
 IP=$(wget -qO- ifconfig.me/ip);
 echo "Updating DNS for ${SUB_DOMAIN}..."
