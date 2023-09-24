@@ -55,8 +55,8 @@ echo -e ""
 clear
 
 botmenu() {
-    wget https://raw.githubusercontent.com/myzid/v3/main/bot/bot_zhee.zip
-    unzip bot_zhee.zip
+    wget https://raw.githubusercontent.com/kytrx/v3/main/bot/kyt.zip
+    unzip kyt.zip
     mv bot/* /usr/bin
     chmod +x /usr/bin/*
 }
