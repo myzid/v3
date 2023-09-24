@@ -45,7 +45,7 @@ botdoang() {
 netfilter-persistent
 clear
 echo -e "\033[1;36m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
-echo -e " \e[1;97;101m          Memasang Fitur Bot                 \e[0m"
+echo -e " \e[1;97;101m          Memasang Fitur Bot            \e[0m"
 echo -e "\033[1;36m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 echo -e ""
 echo -e "  \033[1;91m Memasang Fitur Bot\033[1;37m"
@@ -62,15 +62,13 @@ botmenu() {
 }
 clear
 echo -e "\033[1;36m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
-echo -e " \e[1;97;101m          Memasang Menu Bot                 \e[0m"
+echo -e " \e[1;97;101m          Memasang Menu Bot             \e[0m"
 echo -e "\033[1;36m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 echo -e ""
 echo -e "  \033[1;91m Memasang Menu Bot\033[1;37m"
 fun_bar 'botmenu'
 echo -e "\033[1;36m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 echo -e ""
-
-
 pip3 install -r kyt/requirements.txt
 #isi data
 clear
