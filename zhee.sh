@@ -9,16 +9,71 @@ NC='\e[0m'
 apt update && apt upgrade
 apt install python3 python3-pip git
 cd /usr/bin
-wget https://raw.githubusercontent.com/myzid/v3/main/bot/bot.zip
-unzip bot.zip
-mv bot/* /usr/bin
-chmod +x /usr/bin/*
 clear
-wget https://raw.githubusercontent.com/myzid/v3/main/bot/bot_zhee.zip
-unzip kyt.zip
-pip3 install -r kyt/requirements.txt
+fun_bar() {
+    CMD[0]="$1"
+    CMD[1]="$2"
+    (
+        [[ -e $HOME/fim ]] && rm $HOME/fim
+        ${CMD[0]} -y >/dev/null 2>&1
+        ${CMD[1]} -y >/dev/null 2>&1
+        touch $HOME/fim
+    ) >/dev/null 2>&1 &
+    tput civis
+    echo -ne "  \033[0;33mPlease Wait Loading \033[1;37m- \033[0;33m["
+    while true; do
+        for ((i = 0; i < 18; i++)); do
+            echo -ne "\033[0;32m#"
+            sleep 0.1s
+        done
+        [[ -e $HOME/fim ]] && rm $HOME/fim && break
+        echo -e "\033[0;33m]"
+        sleep 1s
+        tput cuu1
+        tput dl1
+        echo -ne "  \033[0;33mPlease Wait Loading \033[1;37m- \033[0;33m["
+    done
+    echo -e "\033[0;33m]\033[1;37m -\033[1;32m OK !\033[1;37m"
+    tput cnorm
+}
+botdoang() {
+    wget https://raw.githubusercontent.com/myzid/v3/main/bot/bot.zip
+    unzip bot.zip
+    mv bot/* /usr/bin
+    chmod +x /usr/bin/*
+}
+netfilter-persistent
+clear
+echo -e "\033[1;36m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
+echo -e " \e[1;97;101m          Memasang Fitur Bot                 \e[0m"
+echo -e "\033[1;36m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
+echo -e ""
+echo -e "  \033[1;91m Memasang Fitur Bot\033[1;37m"
+fun_bar 'botdoang'
+echo -e "\033[1;36m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
+echo -e ""
+clear
 
+botmenu() {
+    wget https://raw.githubusercontent.com/myzid/v3/main/bot/bot_zhee.zip
+    unzip bot_zhee.zip
+    mv bot/* /usr/bin
+    chmod +x /usr/bin/*
+}
+clear
+echo -e "\033[1;36m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
+echo -e " \e[1;97;101m          Memasang Menu Bot                 \e[0m"
+echo -e "\033[1;36m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
+echo -e ""
+echo -e "  \033[1;91m Memasang Menu Bot\033[1;37m"
+fun_bar 'botmenu'
+echo -e "\033[1;36m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
+echo -e ""
+
+
+pip3 install -r kyt/requirements.txt
 #isi data
+clear
 echo ""
 echo -e "\033[1;36m════════════════════════════════════\033[0m"
 echo -e " \e[1;97;101m          ADD BOT PANEL          \e[0m"
@@ -67,5 +122,5 @@ echo "Setting done"
 clear
 
 echo " Installations complete, type /menu on your bot"
-rm -rf kyt.sh
+rm -rf bot_zhee.sh
 rm -rf bot.zip
