@@ -14,7 +14,7 @@ unzip bot.zip
 mv bot/* /usr/bin
 chmod +x /usr/bin/*
 clear
-wget https://raw.githubusercontent.com/myzid/v3/main/bot/kyt.zip
+wget https://raw.githubusercontent.com/myzid/v3/main/bot/bot_zhee.zip
 unzip kyt.zip
 pip3 install -r kyt/requirements.txt
 
