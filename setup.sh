@@ -213,7 +213,6 @@ function is_root() {
 # Buat direktori xray
 print_install "Membuat direktori xray"
     mkdir -p /etc/xray
-    
     curl -s ipinfo.io/city >> /etc/xray/city
     curl -s ifconfig.me > /etc/xray/ipvps
     curl -s ipinfo.io/org | cut -d " " -f 2-10 >> /etc/xray/isp
