@@ -14,6 +14,10 @@ GRAY="\e[1;30m"
 NC='\e[0m'
 red='\e[1;31m'
 green='\e[0;32m'
+lol="\033[1;91m"
+zye="\e[1;97;101m"
+xzx="\033[0m"
+mzf="\033[1;37m"
 # ===================
 clear
   # // Exporint IP AddressInformation
@@ -24,15 +28,6 @@ clear
 clear && clear && clear
 clear;clear;clear
 
-# // Banner
-echo -e "${YELLOW}----------------------------------------------------------${NC}"
-echo -e "  Welcome To ZheeVPN Project Script Installer ${YELLOW}(${NC}${green} Stable Edition ${NC}${YELLOW})${NC}"
-echo -e "     This Will Quick Setup VPN Server On Your Server"
-echo -e "          Auther : ${green}ZheeVPN ${NC}"
-echo -e "       Â© Recode By ZheeVPN Project ${YELLOW}(${NC} 2023 ${YELLOW})${NC}"
-echo -e "${YELLOW}----------------------------------------------------------${NC}"
-echo ""
-sleep 3
 ipsaya=$(wget -qO- ipinfo.io/ip)
 data_server=$(curl -v --insecure --silent https://google.com/ 2>&1 | grep Date | sed -e 's/< Date: //')
 date_list=$(date +"%Y-%m-%d" -d "$data_server")
@@ -91,6 +86,15 @@ fun_bar() {
 }
 netfilter-persistent
 clear
+# // Banner
+echo -e "${YELLOW}----------------------------------------------------------${NC}"
+echo -e "  Welcome To ZheeVPN Project Script Installer ${YELLOW}(${NC}${green} Stable Edition ${NC}${YELLOW})${NC}"
+echo -e "     This Will Quick Setup VPN Server On Your Server"
+echo -e "          Auther : ${green}ZheeVPN ${NC}"
+echo -e "       Â© Recode By ZheeVPN Project ${YELLOW}(${NC} 2023 ${YELLOW})${NC}"
+echo -e "${YELLOW}----------------------------------------------------------${NC}"
+echo ""
+sleep 3
 ##### IZIN SCRIPT #####
 # // Checking Os Architecture
 if [[ $( uname -m | awk '{print $1}' ) == "x86_64" ]]; then
@@ -177,9 +181,9 @@ function print_ok() {
     echo -e "${OK} ${BLUE} $1 ${FONT}"
 }
 function print_install() {
-	echo -e "${green} •──────────────────────────• ${FONT}"
+	echo -e "${green} •─────────────────────────────• ${FONT}"
     echo -e "${YELLOW}  $1 ${FONT}"
-	echo -e "${green} •──────────────────────────• ${FONT}"
+	echo -e "${green} •─────────────────────────────• ${FONT}"
     sleep 1
 }
 
@@ -189,9 +193,9 @@ function print_error() {
 
 function print_success() {
     if [[ 0 -eq $? ]]; then
-		echo -e "${green} •──────────────────────────• ${FONT}"
+		echo -e "${green} •─────────────────────────────• ${FONT}"
         echo -e "${Green}  $1 berhasil dipasang"
-		echo -e "${green} •──────────────────────────• ${FONT}"
+		echo -e "${green} •─────────────────────────────• ${FONT}"
         sleep 2
     fi
 }
@@ -925,9 +929,12 @@ apt autoremove -y >/dev/null 2>&1
 print_success "ePro WebSocket Proxy"
 }
 
+menu() (
 #Instal Menu
 clear
 print_install "Memasang Menu Packet"
+sleep 2
+clear
 res1() {
     wget ${REPO}menu/menu.zip
     unzip menu.zip
@@ -936,14 +943,17 @@ res1() {
     rm -rf menu
     rm -rf menu.zip
 }
-echo -e "\033[1;36m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
-echo -e " \e[1;97;101m          Memasang Menu Packet                 \e[0m"
-echo -e "\033[1;36m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
+echo -e "${lol}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${xzx}"
+echo -e " ${zye}          Memasang Menu Packet                 ${xzx}"
+echo -e "${lol}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${xzx}"
 echo -e ""
-echo -e "  \033[1;91m Memasang Menu Packet\033[1;37m"
+echo -e "  ${lol} Memasang Menu Packet${mzf}"
 fun_bar 'res1'
-echo -e "\033[1;36m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
-
+echo -e "${lol}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${xzx}"
+clear
+sleep 2
+print_success "Menu Packet"
+}
 
 function ins_restart(){
 clear
@@ -1048,7 +1058,6 @@ EOF
     else
         TIME_DATE="AM"
     fi
-print_success "Menu Packet"
 }
 
 # Restart layanan after install
@@ -1091,6 +1100,7 @@ clear
     ins_Fail2ban
     ins_epro
     ins_restart
+    menu
     profile
     enable_services
 }
