@@ -1,13 +1,13 @@
 #!/bin/bash
 
 function send_log(){
-CHATID="5795571992"
-KEY="6079069898:AAGT8hggC62cVoeKq1Q1k37sWj2Bys5NL1M"
-TIME="10"
-URL="https://api.telegram.org/bot$KEY/sendMessage"
+CHATID=$(grep -E "^#bot# " "/etc/bot/.bot.db" | cut -d ' ' -f 3)
+KEY=$(grep -E "^#bot# " "/etc/bot/.bot.db" | cut -d ' ' -f 2)
+export TIME="10"
+export URL="https://api.telegram.org/bot$KEY/sendMessage"
 TEXT="
 <code>────────────────────</code>
-<b>⚠️NOTIF LIMIT IP KYT⚠️</b>
+<b>⚠️NOTIF LIMIT IP ⚠️</b>
 <code>────────────────────</code>
 <code>Username  : </code><code>$user</code>
 <code>Limit Ip    : </code><code>$jum2</code>
