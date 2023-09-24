@@ -928,7 +928,6 @@ apt autoremove -y >/dev/null 2>&1
 print_success "ePro WebSocket Proxy"
 }
 
-menu() (
 #Instal Menu
 clear
 print_install "Memasang Menu Packet"
@@ -952,7 +951,6 @@ echo -e "${lol}━━━━━━━━━━━━━━━━━━━━━�
 clear
 sleep 2
 print_success "Menu Packet"
-}
 
 function ins_restart(){
 clear
@@ -1099,7 +1097,6 @@ clear
     ins_Fail2ban
     ins_epro
     ins_restart
-    menu
     profile
     enable_services
 }
