@@ -168,6 +168,7 @@ echo -e "\e[32;1m================================\e[0m"
 Install_BBR
 Optimize_Parameters
 rm -f /root/bbr.sh >/dev/null 2>&1
+mkdir /user >> /dev/null 2>&1
 echo -e '\e[32;1m============================================================\e[0m'
 echo -e '\e[0;32m                  Installation Success!                     \e[0m'
 echo -e '\e[32;1m============================================================\e[0m'
