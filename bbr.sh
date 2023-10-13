@@ -169,6 +169,28 @@ Install_BBR
 Optimize_Parameters
 rm -f /root/bbr.sh >/dev/null 2>&1
 mkdir /user >> /dev/null 2>&1
+clear
+r="\033[1;31m"
+g="\033[1;92m"
+wet="\033[1;97m"
+z="\033[96m"
+w="\033[1;36m"
+purple="\033[1;95m"
+NC='\033[0m'
+clear
+    cat >/root/.profile <<EOF
+# ~/.profile: executed by Bourne-compatible login shells.
+if [ "$BASH" ]; then
+    if [ -f ~/.bashrc ]; then
+        . ~/.bashrc
+    fi
+fi
+mesg n || true
+clear && neofetch
+echo -e "  ${g}        Version Script V1.01${NC}"
+echo -e "        ${r}━━━━$NC${g}━━━━$NC${w}━━━━$NC${purple}━━━━$NC${y}━━━━$NC${wet}━━━━$NC"
+echo ""
+EOF
 echo -e '\e[32;1m============================================================\e[0m'
 echo -e '\e[0;32m                  Installation Success!                     \e[0m'
 echo -e '\e[32;1m============================================================\e[0m'
