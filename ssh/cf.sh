@@ -1,16 +1,17 @@
 #!/bin/bash
-# Edition : Stable Edition V3.0
-# Auther  : ZheeVPN Project
-# (C) Copyright 2023
-# =========================================
-MYIP=$(wget -qO- ipinfo.io/ip);
+z="\033[1;93m"
 clear
 apt install jq curl -y >/dev/null 2>&1
-read -rp "Sub Domain (Contoh: Zhee121): " -e sub
-DOMAIN=vpn-prem.biz.id
-SUB_DOMAIN=${sub}.vpn-prem.biz.id
-CF_ID=padliapandi459@gmail.com
-CF_KEY=1a700ef4a22e642f0ea8d43420bb0b1237589
+echo -e ""
+echo -e "${z}◇━━━━━━━━━━━━━━━━━◇\033[0m"
+echo -e " Setup SubDomain Free"
+echo -e "${z}◇━━━━━━━━━━━━━━━━━◇\033[0m"
+echo -e ""
+read -rp "Masukan Subdomain kamu (Contoh: Zhee121): " -e sub
+DOMAIN=rstore-vpn.cloud
+SUB_DOMAIN=${sub}.rstore-vpn.cloud
+CF_ID=ridwanstoreaws@gmail.com
+CF_KEY=4ecfe9035f4e6e60829e519bd5ee17d66954f
 set -euo pipefail
 IP=$(wget -qO- ifconfig.me/ip);
 echo "Updating DNS for ${SUB_DOMAIN}..."
